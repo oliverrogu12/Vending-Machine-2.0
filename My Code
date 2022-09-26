@@ -1,0 +1,88 @@
+from tkinter.messagebox import YES
+
+def userChoice():
+    user_choice=vendingOrder
+
+def vendingEnd():
+    print("Alright, your order has been processed. Please wait and collect your "+vendingOrder+" from the Vending Machine lower drawer now.")
+
+def priceLoad():
+    print("Alright, loading price. Please wait a moment.")
+
+def priceProcess():
+    print("Alright, processing order.")
+
+def receiptPrint(vendingOrder):
+    print("Alright, you reciept is being printed now. Please collect your reciept from the Vending Machine.")
+    print("YOUR RECIEPT")
+    print("------------")
+    print("Today, you ordered:")
+    print(vendingOrder)
+    print("for the price of:")
+    print(orderPrice)
+
+with open('areciept.txt', 'w') as f:
+    data=receiptPrint()
+    f.write(data)
+
+
+print("Hello, this Python program serves as a vending machine code, which I (Oliver Roguski) created, so far it isn't very good.")
+programStart = input("Would you like to try out this program? You can answer with 'Yes' or 'No' or anything else as a response.")
+if programStart == "Yes":
+    print("Great, the vending machine program will start!")
+    print("For this program, you will be asked what you would like to order from a selection of options.")
+    
+    
+    vendingMenu = input("Would you like to see what the vending machine offers? You can answer with 'Yes' or anything else as a response.")
+    if vendingMenu == "Yes":
+        print("Alright, here is the menu.")
+        print("We offer: Coca Cola, Fanta, Sprite, Spring Water and Apple Juice.")
+        vendingOrder = input("if you have decided on a order, please enter your selected item and we will give you the price of the item.")
+        if vendingOrder == " Coca Cola":
+            orderPrice = ("1.00£")
+            priceLoad()
+
+        elif vendingOrder == "Fanta":
+            orderPrice=("1.00£")
+            print("The price of "+vendingOrder+" is "+orderPrice)
+            priceLoad()
+
+        elif vendingOrder == "Sprite":
+            orderPrice=("1.00£")
+            print("The price of "+vendingOrder+" is "+orderPrice)
+            priceLoad()
+            
+
+        elif vendingOrder == "Spring water":
+            orderPrice=("90p")
+            print("The price of "+vendingOrder+" is "+orderPrice)
+            priceLoad()
+            
+
+        elif vendingOrder == "Apple juice":
+            orderPrice=("80p")
+            print("The price of "+vendingOrder+" is "+orderPrice)
+            priceLoad()
+
+        vendingVerify = input("Would you like to order "+vendingOrder+" for "+orderPrice+"? You can answer with 'Yes' or anything else as a response.")
+        if vendingVerify == "Yes":
+                print("Alright, processing order.")
+                vendingPayChoice = input("Would you like to see a selection of payment methods that we offer to pay for your "+vendingOrder+"? You can answer with 'Yes' or anything else as a response.")
+        if vendingPayChoice == "Yes":
+                print("Alright, the following payment methods can be used.")
+                print("Google Pay, Apple Pay and Paypal are accepted payment methods.")   
+                methodPayBasic = input("What payment method would you like to use? PLEASE NOTE: Please spell your payment method as previously mentioned, or else it will not be recognised.")
+                if methodPayBasic == "Google Pay" or "Apple Pay" or "Paypal":
+                    print("Alright, please open your "+methodPayBasic+" card and present it to the card scanner")
+                    seePayment = input("Have you presented your "+methodPayBasic+" card to the vending machine? You can answer with 'Yes' or anything else as a response.")
+                    if seePayment == "Yes":
+                        print("Alright, your order has been processed. Please wait and collect your "+vendingOrder+" from the Vending Machine lower drawer now.")
+                        askReceipt = input("Would you like a reciept of your order? You can answer with 'Yes' or anything else.")
+                        if askReceipt == "Yes":
+                            receiptPrint(vendingOrder)
+                        else:
+                            print("Alright, no receipt will be printed.")
+                    else:
+                        print("Alright. Cancelling order.")
+else:
+    print("Alright, order cancelled.")
